@@ -2,7 +2,7 @@
 // @name         YouTube Music Now Playing (Songs + Videos)
 // @namespace    https://currentlylistening-ssmm.onrender.com
 // @version      2.0
-// @description  Send current song or music video info (with reliable thumbnail) to backend
+// @description  Send current song or music video info to backend
 // @match        https://music.youtube.com/*
 // @grant        none
 // ==/UserScript==
@@ -13,13 +13,13 @@
     const BACKEND_URL = "Your url here";
     let lastSong = null;
 
-    // 🧩 Get YouTube video ID from URL
+    // Get YouTube video ID from URL
     function getVideoId() {
         const url = new URL(window.location.href);
         return url.searchParams.get('v') || null;
     }
 
-    // 🧩 Get official YouTube thumbnail
+    // Get official YouTube thumbnail
     function getYouTubeThumbnail(videoId) {
         if (!videoId) return "";
         // Fallback order: maxres → sd → hq → mq
@@ -27,7 +27,7 @@
         return `https://i.ytimg.com/vi/${videoId}/${qualities[0]}.jpg`;
     }
 
-    // 🧩 Try to extract the thumbnail using multiple methods
+    // Try to extract the thumbnail using multiple methods
     function getYtMusicThumbnail() {
         let thumb = "";
 
@@ -70,7 +70,7 @@
         return thumb;
     }
 
-    // 🧩 Get current song / music video info
+    // Get current song / music video info
     function getCurrentYtMusicSong() {
         const titleEl = document.querySelector('yt-formatted-string.title.style-scope.ytmusic-player-bar');
         const artistEl = document.querySelector('yt-formatted-string.byline.style-scope.ytmusic-player-bar');
@@ -82,7 +82,7 @@
         return { title, artist, thumbnail };
     }
 
-    // 🧩 Send to backend only when song changes
+    // Send to backend only when song changes
     async function updateNowPlaying() {
         const song = getCurrentYtMusicSong();
 
@@ -104,7 +104,7 @@
         }
     }
 
-    // 🧩 Use MutationObserver for instant updates
+    // Use Observer for updates
     function initNowPlayingObserver() {
         const playerBar = document.querySelector('ytmusic-player-bar');
         if (!playerBar) {
@@ -121,6 +121,6 @@
         console.log("🎧 NowPlaying observer active");
     }
 
-    // Initialize
     initNowPlayingObserver();
 })();
+
