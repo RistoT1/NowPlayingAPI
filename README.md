@@ -11,7 +11,7 @@ Full-stack project that tracks and displays YouTube Music songs in real-time wit
 - Chrome extension for automatic song tracking
 - Animated vinyl record frontend visualization
 
-![Preview](../readMeImg/ReadmeImg1.png)
+![Preview](./readMeImg/ReadmeImg1.png)
 
 ## Features
 
