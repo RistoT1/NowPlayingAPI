@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        height: 100%;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    #wrap {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #album {
+        position: absolute;
+        top: 12.5%;
+        left: 12.5%;
+        height: 50vw;
+        width: 50%;
+        max-height: 75%;
+        max-width: 75vh;
+    }
+
+    #cover {
+        position: relative;
+        z-index: 1;
+        width: 70%;
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.6),
+            inset 0 0 8px rgba(255, 255, 255, 0.15),
+            inset 0 0 4px rgba(0, 0, 0, 0.4);
+        background-image: var(--cover-img, url(''));
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Pseudo-element for border effect */
+    #cover::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        /* fills the cover */
+        padding: 12px;
+        /* border thickness */
+        border-radius: inherit;
+        background: var(--border-img, url(''));
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        /* make it appear as a border around cover */
+        pointer-events: none;
+    }
+
+
+
+
+
+    #vinyl {
+        position: absolute;
+        top: 2.5%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        width: 95%;
+        height: 95%;
+        display: block;
+        background: radial-gradient(circle at center, #222 0%, #000 70%);
+        box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        animation: 5s linear spinThat infinite;
+    }
+
+    #print {
+        position: absolute;
+        top: 33%;
+        left: 33%;
+        height: 34%;
+        width: 34%;
+        box-shadow: inset 0 0 0 5px rgba(150, 150, 150, 0.5);
+        background-image: url('./pngimg.com\ -\ vinyl_PNG107.png');
+        background-size: cover;
+        border-radius: 50%;
+    }
+
+
+    @keyframes spinThat {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div id="wrap">
+        <div id="album">
+            <div id="cover">
+            </div>
+            <div id="vinyl">
+                <div id="print">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const API_URL = "url here";
+    let lastSong = null; // Track previous song
+
+    // Get elements
+    const cover = document.getElementById('cover');
+    const print = document.getElementById('print');
+
+    async function fetchCurrentSong() {
+        try {
+            const res = await fetch(API_URL);
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+            const song = await res.json();
+            const thumbnail = song.thumbnail || "";
+
+            // Update cover background
+            cover.style.backgroundImage = `url('${thumbnail}')`;
+
+            // Update cover border to match the thumbnail
+            if (thumbnail) {
+                cover.style.borderImage = `url('${thumbnail}') 30 stretch`;
+            } else {
+                cover.style.borderImage = ""; // fallback if no thumbnail
+            }
+
+            // Update vinyl print
+            print.style.backgroundImage = `url('${thumbnail}')`;
+
+            // Log only when the song changes
+            if (!lastSong || lastSong.title !== song.title || lastSong.artist !== song.artist) {
+                console.log("Now Playing:", song.title, song.artist, song.thumbnail);
+                lastSong = song;
+            }
+
+        } catch (err) {
+            console.error("Failed to fetch song:", err);
+        }
+    }
+
+    // Initial fetch
+    fetchCurrentSong();
+
+    // Refresh every 5 seconds
+    setInterval(fetchCurrentSong, 5000);
+
+</script>
+
+</html>
