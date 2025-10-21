@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Music Now Playing",
+  "version": "1.0",
+  "description": "Automatically sends the currently playing YouTube Music song to your backend API.",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://music.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
