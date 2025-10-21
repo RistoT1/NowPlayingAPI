@@ -124,5 +124,4 @@ NowplayingApi/
 ├── frontend/            # Vinyl visualization
 │   └── index.html
 └── README.md
-
-live demo can be seen in my portfolio https://webportfolio-rt.netlify.app/#home
+[live demo can be seen in my portfolio](https://webportfolio-rt.netlify.app/#home) 
