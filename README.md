@@ -123,6 +123,4 @@ NowplayingApi/
 │   └── index.html
 └── README.md
 
-**Made with ❤️ by [Your Name]**
-
-[🔗 Live Demo](https://your-demo-link.com) • [🐛 Report Issues](https://github.com/YourUsername/currentlylistening/issues)
+live demo can be seen in my portfolio https://webportfolio-rt.netlify.app/#home
