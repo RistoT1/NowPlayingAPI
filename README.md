@@ -26,7 +26,7 @@ Express.js • Node.js • HTML5 • CSS3 • Vanilla JavaScript
 ## Quick Start
 ```bash
 # Clone and install
-git clone https://github.com/YourUsername/currentlylistening.git
+git clone https://github.com/RistoT1/NowPlayingAPI
 cd currentlylistening/server
 npm install
 
