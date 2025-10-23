@@ -29,7 +29,7 @@ Express.js • Node.js • HTML5 • CSS3 • Vanilla JavaScript
 ```bash
 # Clone and install
 git clone https://github.com/RistoT1/NowPlayingAPI
-cd currentlylistening/server
+cd NowPlayingAPI/server
 npm install
 
 # Start server
