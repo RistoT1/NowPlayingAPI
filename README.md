@@ -1,11 +1,8 @@
-# NowPlayingAPI 🎵
+# NowPlayingAPI
 
-Track your currently playing YouTube Music songs in real-time with a beautiful vinyl record visualization.
+Track your currently playing YouTube Music songs
 
 ## Overview
-
-Full-stack project that tracks and displays YouTube Music songs in real-time with an animated vinyl record interface.
-
 **Components:**
 - Express.js backend API
 - Chrome extension for automatic song tracking
@@ -15,15 +12,13 @@ Full-stack project that tracks and displays YouTube Music songs in real-time wit
 
 ## Features
 
-- 🎧 Real-time song tracking from YouTube Music
-- 💿 Beautiful animated vinyl record with album artwork
-- 🔄 Auto-updates every 5 seconds
-- 🌐 RESTful API
-- 🔌 Chrome extension & userscript support
+- Real-time song tracking from YouTube Music
+- RESTful API
+- Chrome extension
 
 ## Tech Stack
 
-Express.js • Node.js • HTML5 • CSS3 • Vanilla JavaScript
+Express.js • Node.js • HTML5 • CSS3 • JavaScript
 
 ## Quick Start
 ```bash
@@ -46,12 +41,6 @@ cd server
 npm install    # Downloads all required packages (Express.js, etc.)
 npm start      # Starts the Express server on port 3001
 ```
-
-**What `npm install` does:**
-- Reads `package.json` to see what packages are needed
-- Downloads Express.js and other dependencies
-- Creates a `node_modules` folder with all the packages
-- Only needs to be run once (or when dependencies change)
 
 **Server Configuration:**
 - Default port: `3001`
@@ -83,7 +72,6 @@ const API_URL = "http://localhost:3001/nowplaying";
 ```
 
 2. Open `frontend/index.html` in browser
-3. Enjoy the spinning vinyl! 🎵
 
 ## API Documentation
 
