@@ -100,7 +100,7 @@ const API_URL = "http://localhost:3001/nowplaying";
 **Frontend:** [Netlify](https://netlify.com) • [GitHub Pages](https://pages.github.com)
 
 Don't forget to update the API URL in `extension & index.html` after deploying!
-##Also remember to asing env key for the deploying if you want your api to be secure##
+Also remember to asing env key for the deploying if you want your api to be secure
 ## Project Structure
 ```
 NowplayingApi/
